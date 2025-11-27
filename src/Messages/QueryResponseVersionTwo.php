@@ -17,6 +17,7 @@ class QueryResponseVersionTwo extends QueryResponse
     private $authenticationValue;
     private $transStatusReason;
     private $enrolled;
+    private $messageVersion;
 
     public function __construct(array $data)
     {
@@ -30,6 +31,7 @@ class QueryResponseVersionTwo extends QueryResponse
         $this->authenticationValue = $data['authenticationValue'] ?? null;
         $this->transStatusReason = $data['transStatusReason'] ?? null;
         $this->enrolled = $data['enrolled'] ?? null;
+        $this->messageVersion = $data['messageVersion'] ?? null;
     }
 
     public function id()
@@ -120,12 +122,18 @@ class QueryResponseVersionTwo extends QueryResponse
         return true;
     }
 
+    public function messageVersion(): ?string
+    {
+        return $this->messageVersion;
+    }
+
     public function extra(): array
     {
         return [
             'transStatusReason' => $this->reasonCode(),
             'acsTransId' => $this->acsTransID(),
             'threeDSServerTransID' => $this->threeDSServerTransID(),
+            'messageVersion' => $this->messageVersion(),
         ];
     }
 
@@ -144,6 +152,7 @@ class QueryResponseVersionTwo extends QueryResponse
             'authenticationValue' => $result['authenticationValue'] ?? null,
             'transStatusReason' => $result['transStatusReason'] ?? null,
             'version' => self::readVersion($result['messageVersion'] ?? '2.1.0'),
+            'messageVersion' => $result['messageVersion'] ?? null,
         ];
 
         return new self($data);
