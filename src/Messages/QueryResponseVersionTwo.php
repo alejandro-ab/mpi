@@ -25,7 +25,7 @@ class QueryResponseVersionTwo extends QueryResponse
         $this->transStatus = $data['transStatus'];
         $this->eci = $data['eci'];
         $this->acsTransID = $data['acsTransID'] ?? null;
-        $this->dsTransID = $data['dsTransID' ?? null];
+        $this->dsTransID = $data['dsTransID'] ?? null;
         $this->threeDSServerTransID = $data['threeDSServerTransID'] ?? null;
         $this->authenticationValue = $data['authenticationValue'] ?? null;
         $this->transStatusReason = $data['transStatusReason'] ?? null;
