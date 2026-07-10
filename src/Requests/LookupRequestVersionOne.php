@@ -58,7 +58,7 @@ class LookupRequestVersionOne implements Request
 
     public function __construct(array $data)
     {
-        $this->locale = isset($data['locale']) ? $data['locale'] : 'en';
+        $this->locale = $data['locale'] ?? 'en';
         $this->pan = $data['card']['number'];
         $this->expiration_year = $data['card']['expirationYear'];
         $this->expiration_month = $data['card']['expirationMonth'];
@@ -66,8 +66,8 @@ class LookupRequestVersionOne implements Request
         $this->reference = $data['reference'] ?? null;
         $this->currency = $data['currency'] ?? 'USD';
         $this->redirect_uri = $data['redirectUrl'];
-        $this->disable_redirect = isset($data['disableRedirect']) ? $data['disableRedirect'] : false;
-        $this->installments = isset($data['card']['installments']) ? $data['card']['installments'] : null;
+        $this->disable_redirect = $data['disableRedirect'] ?? false;
+        $this->installments = $data['card']['installments'] ?? null;
     }
 
     public function toArray(): array

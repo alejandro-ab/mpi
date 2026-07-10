@@ -24,8 +24,8 @@ class LookupResponseVersionTwo extends LookupResponse
 
         $data = [
             'sessionToken' => $result['sessionToken'],
-            'redirectURL' => isset($result['redirectURL']) ? $result['redirectURL'] : null,
-            'transactionID' => isset($result['transactionID']) ? $result['transactionID'] : null,
+            'redirectURL' => $result['redirectURL'] ?? null,
+            'transactionID' => $result['transactionID'] ?? null,
         ];
 
         return new self($data);

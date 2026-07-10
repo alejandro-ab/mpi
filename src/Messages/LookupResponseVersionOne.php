@@ -95,9 +95,9 @@ class LookupResponseVersionOne extends LookupResponse
 
         $data = [
             'enrolled' => $result['enrolled'],
-            'redirectUrl' => isset($result['redirect_url']) ? $result['redirect_url'] : null,
-            'identifier' => isset($result['transaction_id']) ? $result['transaction_id'] : null,
-            'eci' => isset($result['eci_flag']) ? $result['eci_flag'] : null,
+            'redirectUrl' => $result['redirect_url'] ?? null,
+            'identifier' => $result['transaction_id'] ?? null,
+            'eci' => $result['eci_flag'] ?? null,
             'formData' => null,
         ];
 
@@ -106,7 +106,7 @@ class LookupResponseVersionOne extends LookupResponse
                 'acsUrl' => $result['acs_url'],
                 'paReq' => $result['pa_req'],
                 'termUrl' => $result['term_url'],
-                'md' => isset($result['md']) ? $result['md'] : null,
+                'md' => $result['md'] ?? null,
             ];
         }
 

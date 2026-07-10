@@ -106,8 +106,8 @@ class QueryResponseVersionOne extends QueryResponse
             'authenticated' => $result['authentication_status'],
             'validSignature' => (bool)$result['validated_signature'],
             'eci' => $result['eci'],
-            'cavv' => isset($result['cavv']) ? $result['cavv'] : null,
-            'xid' => isset($result['xid']) ? $result['xid'] : null,
+            'cavv' => $result['cavv'] ?? null,
+            'xid' => $result['xid'] ?? null,
         ];
 
         return new self($data);
