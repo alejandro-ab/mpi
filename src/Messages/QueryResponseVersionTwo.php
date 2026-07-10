@@ -102,7 +102,7 @@ class QueryResponseVersionTwo extends QueryResponse
 
     public function reasonCode()
     {
-        return$this->transStatusReason;
+        return $this->transStatusReason;
     }
 
     public function threeDSServerTransID()

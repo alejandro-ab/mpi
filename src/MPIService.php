@@ -26,7 +26,7 @@ class MPIService
     ];
 
     /**
-     * @var \PlacetoPay\MPI\Entities\MpiContract
+     * @var Entities\MpiContract
      */
     private $mpiManager;
 
