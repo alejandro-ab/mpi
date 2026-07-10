@@ -64,7 +64,6 @@ class MockClientVersionOne implements MPIClient
                     'redirect_url' => 'https://dnetix.co/ping/3ds',
                     'transaction_id' => $data['expiration_month'] == '02' ? 2 : 1,
                 ];
-                break;
             case '4716036206946551':
                 if (!isset($data['installments']) || $data['installments'] > 36) {
                     throw new MPIException('Installments are not provided');
@@ -105,7 +104,6 @@ class MockClientVersionOne implements MPIClient
                     'cavv' => 'AAACCZJiUGVlF4U5AmJQEwAAAAA=',
                     'xid' => 'Z8UuHYF8Epz46M8V/MkGJDl2Y5E=',
                 ];
-                break;
             case 2:
                 return [
                     'authentication_status' => 'A',
@@ -114,7 +112,6 @@ class MockClientVersionOne implements MPIClient
                     'cavv' => 'CAACAlRGNFVVBEYZGUY0EwAAAAA=',
                     'xid' => '0CI2blBv4uSnIqelFXJX0mV+fMg=',
                 ];
-                break;
             case 3:
                 return [
                     'authentication_status' => 'Y',
@@ -123,7 +120,6 @@ class MockClientVersionOne implements MPIClient
                     'cavv' => 'AAACA1aTWUhYcxeGg5NZEAAAEAA=',
                     'xid' => 'UbRrlDARTXFT8GVALigF4MDyhkk=',
                 ];
-                break;
         }
     }
 

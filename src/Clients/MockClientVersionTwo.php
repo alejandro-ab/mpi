@@ -51,48 +51,35 @@ class MockClientVersionTwo implements MPIClient
             throw new MPIException("Incorrect HTTP Method {$method} ON {$url}");
         }
 
-        switch ($data['acctNumber']) {
-            case '4532840681197602':
-                return [
-                    'sessionToken' => rand(60, 60),
-                    'redirectURL' => 'https://dnetix.co/ping/3ds',
-                    'transactionID' => substr($data['cardExpiryDate'], -2),
-                ];
-                break;
-            case '5554575520765108':
-                return [
-                    'error_number' => 1004,
-                    'error_description' => 'There is no subscription associated',
-                ];
-            case '4716036206946551':
-                return [
-                        'error_number' => 1011,
-                        'error_description' =>  'Invalid arguments to initiate the authentication request',
-                        'errors' => [
-                            'acctNumber'=> [
-                                "The card number doesn't pass validation",
-                            ],
-                        ],
-                ];
-                break;
-            case '6011499026766178':
-                return [
+        return match ($data['acctNumber']) {
+            '5554575520765108' => [
+                'error_number' => 1004,
+                'error_description' => 'There is no subscription associated',
+            ],
+            '4716036206946551' => [
                     'error_number' => 1011,
                     'error_description' =>  'Invalid arguments to initiate the authentication request',
                     'errors' => [
                         'acctNumber'=> [
-                            'The card number is invalid',
+                            "The card number doesn't pass validation",
                         ],
                     ],
-                ];
-                break;
-            default:
-                return [
-                    'sessionToken' => rand(60, 60),
-                    'redirectURL' => 'https://dnetix.co/ping/3ds',
-                    'transactionID' => substr($data['cardExpiryDate'], -2),
-                ];
-        }
+            ],
+            '6011499026766178' => [
+                'error_number' => 1011,
+                'error_description' =>  'Invalid arguments to initiate the authentication request',
+                'errors' => [
+                    'acctNumber'=> [
+                        'The card number is invalid',
+                    ],
+                ],
+            ],
+            default => [
+                'sessionToken' => 60,
+                'redirectURL' => 'https://dnetix.co/ping/3ds',
+                'transactionID' => substr($data['cardExpiryDate'], -2),
+            ],
+        };
     }
 
     /**
@@ -117,7 +104,6 @@ class MockClientVersionTwo implements MPIClient
                         'threeDSServerTransID' => 'eadd3a60-b870-41d0-977f-921b3dbe6323/MkGJDl2Y5E=',
                         'authenticationValue' => 'AAABBZEEBgAAAAAAAAQGAAAAAAA=',
                     ];
-                    break;
                 case 2:
                     return [
                         'transStatus' => 'U',
