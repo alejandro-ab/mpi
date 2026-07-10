@@ -39,7 +39,6 @@ class QueryResponseVersionTwo extends QueryResponse
 
     /**
      * Returns true if the authentication process has been successfully completed.
-     * @return bool
      */
     public function isAuthenticated(): bool
     {
@@ -74,7 +73,6 @@ class QueryResponseVersionTwo extends QueryResponse
      *      05 - Issuer Liability
      *      06 - Issuer/Merchant Liability
      *      07 - Merchant Liability.
-     * @return string
      */
     public function eci(): string
     {

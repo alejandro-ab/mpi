@@ -43,7 +43,6 @@ class LookupResponseVersionTwo extends LookupResponse
 
     /**
      * Return true if the user can be authenticated through the MPI.
-     * @return bool
      */
     public function canAuthenticate(): bool
     {

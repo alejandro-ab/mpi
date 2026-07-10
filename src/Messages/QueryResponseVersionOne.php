@@ -31,7 +31,6 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * Returns true if the authentication process has been successfully completed.
-     * @return bool
      */
     public function isAuthenticated(): bool
     {
@@ -58,7 +57,6 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * Return true if the signature for the ACS response has been validated.
-     * @return bool
      */
     public function validSignature(): bool
     {
@@ -71,7 +69,6 @@ class QueryResponseVersionOne extends QueryResponse
      *      05 - Issuer Liability
      *      06 - Issuer/Merchant Liability
      *      07 - Merchant Liability.
-     * @return string
      */
     public function eci(): string
     {
@@ -88,7 +85,6 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * Identifier of the resulting transaction for the authentication process.
-     * @return mixed
      */
     public function xid(): ?string
     {
@@ -97,7 +93,7 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * @param $result
-     * @param null $id
+     * @param $id
      * @return QueryResponseVersionOne
      * @throws \PlacetoPay\MPI\Exceptions\ErrorResultMPI
      */

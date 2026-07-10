@@ -37,7 +37,6 @@ class LookupResponseVersionOne extends LookupResponse
 
     /**
      * Return true if the user can be authenticated through the MPI.
-     * @return bool
      */
     public function canAuthenticate(): bool
     {
@@ -49,7 +48,6 @@ class LookupResponseVersionOne extends LookupResponse
 
     /**
      * Returns the URL to send the user to finish the authentication process.
-     * @return null|string
      */
     public function processUrl(): ?string
     {
@@ -58,7 +56,6 @@ class LookupResponseVersionOne extends LookupResponse
 
     /**
      * Returns the request identifier used to query for the status of the authentication later on.
-     * @return null|string
      */
     public function identifier(): ?string
     {
