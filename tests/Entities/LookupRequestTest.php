@@ -8,7 +8,7 @@ use PlacetoPay\MPI\Tests\BaseTestCase;
 
 class LookupRequestTest extends BaseTestCase
 {
-    public function testItHandlesARequestOnVersionOne()
+    public function testItHandlesARequestOnVersionOne(): void
     {
         $data = [
             'payer' => [
@@ -43,7 +43,7 @@ class LookupRequestTest extends BaseTestCase
         ], $request->toArray());
     }
 
-    public function testItParsesSuccessfullyARequest()
+    public function testItParsesSuccessfullyARequest(): void
     {
         $data = [
             'payer' => [
@@ -77,7 +77,7 @@ class LookupRequestTest extends BaseTestCase
         ], $request->toArray());
     }
 
-    public function testItHandlesASubscriptionRequest()
+    public function testItHandlesASubscriptionRequest(): void
     {
         $data = [
             'payer' => [

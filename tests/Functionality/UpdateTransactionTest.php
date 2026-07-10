@@ -8,7 +8,7 @@ use PlacetoPay\MPI\Tests\BaseTestCase;
 
 class UpdateTransactionTest extends BaseTestCase
 {
-    public function create($overwrite = [])
+    public function create($overwrite = []): MPIService
     {
         return new MPIService(array_merge([
             'url' => 'https://3ds-mpi.placetopay.com',
@@ -17,7 +17,7 @@ class UpdateTransactionTest extends BaseTestCase
         ], $overwrite));
     }
 
-    public function testItConstructTheEntityCorrectly()
+    public function testItConstructTheEntityCorrectly(): void
     {
         $result = $this->create()->update(165150, new UpdateTransactionRequest([
             'processor' => 'INTERDIN',

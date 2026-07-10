@@ -7,7 +7,7 @@ use PlacetoPay\MPI\Tests\BaseTestCase;
 
 class ProcessTest extends BaseTestCase
 {
-    public function create($overwrite = [])
+    public function create($overwrite = []): MPIService
     {
         return new MPIService(array_merge([
             'url' => 'https://dev.placetopay.ec/3ds-mpi/',
@@ -16,7 +16,7 @@ class ProcessTest extends BaseTestCase
         ], $overwrite));
     }
 
-    public function testItObtainsAQuerySuccessfully()
+    public function testItObtainsAQuerySuccessfully(): void
     {
         $mpi = $this->create();
 

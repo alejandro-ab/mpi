@@ -12,7 +12,7 @@ use PlacetoPay\MPI\Tests\BaseTestCase;
 
 class LookUpProcessTest extends BaseTestCase
 {
-    public function create($overwrite = [])
+    public function create($overwrite = []): MPIService
     {
         return new MPIService(array_merge([
             'url' => getenv('MPI_URL'),
@@ -21,7 +21,7 @@ class LookUpProcessTest extends BaseTestCase
         ], $overwrite));
     }
 
-    public function testItConstructTheEntityCorrectly()
+    public function testItConstructTheEntityCorrectly(): void
     {
         $mpi = $this->create();
 
@@ -41,19 +41,19 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertEquals('https://dnetix.co/ping/3ds', $response->processUrl());
     }
 
-    public function testItFailsIfNotURLProvided()
+    public function testItFailsIfNotURLProvided(): void
     {
         $this->expectException(MPIException::class);
         $this->create(['url' => null]);
     }
 
-    public function testItInstantiateTheGuzzleLibrary()
+    public function testItInstantiateTheGuzzleLibrary(): void
     {
         $mpi = $this->create(['client' => null]);
         $this->assertNotNull($mpi);
     }
 
-    public function testItSendsTheInstallmentsCorrectly()
+    public function testItSendsTheInstallmentsCorrectly(): void
     {
         $mpi = $this->create();
 
@@ -72,7 +72,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertFalse($response->canAuthenticate(), 'Card is not registered');
     }
 
-    public function testItValidatesTheInstallmentsCorrectly()
+    public function testItValidatesTheInstallmentsCorrectly(): void
     {
         $this->expectException(MPIException::class);
         $mpi = $this->create();
@@ -91,7 +91,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertFalse($response->canAuthenticate(), 'Card is not registered');
     }
 
-    public function testItChangesTheApiKeyOnDemand()
+    public function testItChangesTheApiKeyOnDemand(): void
     {
         $mpi = $this->create();
 
@@ -111,7 +111,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertFalse($response->canAuthenticate());
     }
 
-    public function testItChangesTheApiKeyOnDemandInvalid()
+    public function testItChangesTheApiKeyOnDemandInvalid(): void
     {
         $this->expectException(MPIException::class);
         $mpi = $this->create();
@@ -132,7 +132,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertFalse($response->canAuthenticate());
     }
 
-    public function testItSendsCorrectlyTheRedirectUrl()
+    public function testItSendsCorrectlyTheRedirectUrl(): void
     {
         $mpi = $this->create();
 
@@ -152,7 +152,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertIsArray($response->toArray());
     }
 
-    public function testItValidatesCorrectlyTheRedirectUrl()
+    public function testItValidatesCorrectlyTheRedirectUrl(): void
     {
         $this->expectException(MPIException::class);
         $mpi = $this->create();
@@ -171,7 +171,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertFalse($response->canAuthenticate());
     }
 
-    public function testItConstructTheVersionTwoEntityCorrectly()
+    public function testItConstructTheVersionTwoEntityCorrectly(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -196,7 +196,7 @@ class LookUpProcessTest extends BaseTestCase
         $this->assertEquals('COP', MockClientVersionTwo::instance()->lastData()['purchaseCurrency']);
     }
 
-    public function testThrowExceptionItInvalidResponse()
+    public function testThrowExceptionItInvalidResponse(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -216,7 +216,7 @@ class LookUpProcessTest extends BaseTestCase
         ]);
     }
 
-    public function testThrowExceptionWhenDoesntHasRecurringFrecuency()
+    public function testThrowExceptionWhenDoesntHasRecurringFrequency(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -238,7 +238,7 @@ class LookUpProcessTest extends BaseTestCase
         ]);
     }
 
-    public function testThrowExceptionWhenDoesntHasRecurringExpiry()
+    public function testThrowExceptionWhenDoesntHasRecurringExpiry(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,

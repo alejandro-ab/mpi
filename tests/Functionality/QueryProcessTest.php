@@ -8,7 +8,7 @@ use PlacetoPay\MPI\Tests\BaseTestCase;
 
 class QueryProcessTest extends BaseTestCase
 {
-    public function create($overwrite = [])
+    public function create($overwrite = []): MPIService
     {
         return new MPIService(array_merge([
             'url' => getenv('MPI_URL'),
@@ -17,7 +17,7 @@ class QueryProcessTest extends BaseTestCase
         ], $overwrite));
     }
 
-    public function testItObtainsAQuerySuccessfully()
+    public function testItObtainsAQuerySuccessfully(): void
     {
         $mpi = $this->create();
 
@@ -30,7 +30,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('Z8UuHYF8Epz46M8V/MkGJDl2Y5E=', $response->xid());
     }
 
-    public function testItDoesNotAuthenticateWhenResponseIsInvalid()
+    public function testItDoesNotAuthenticateWhenResponseIsInvalid(): void
     {
         $mpi = $this->create();
 
@@ -43,7 +43,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('0CI2blBv4uSnIqelFXJX0mV+fMg=', $response->xid());
     }
 
-    public function testItDoesNotFallForInvalidAuthentications()
+    public function testItDoesNotFallForInvalidAuthentications(): void
     {
         $mpi = $this->create();
 
@@ -56,7 +56,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('UbRrlDARTXFT8GVALigF4MDyhkk=', $response->xid());
     }
 
-    public function testItGetsAnArrayWithTheInformation()
+    public function testItGetsAnArrayWithTheInformation(): void
     {
         $mpi = $this->create();
 
@@ -74,7 +74,7 @@ class QueryProcessTest extends BaseTestCase
         ], $response->toArray());
     }
 
-    public function testItObtainsQueryVersionTwoSuccessfully()
+    public function testItObtainsQueryVersionTwoSuccessfully(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -94,7 +94,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('05', $response->eci());
     }
 
-    public function testItDoesAuthenticateOnTreeDSServer()
+    public function testItDoesAuthenticateOnTreeDSServer(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -107,7 +107,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('U', $response->authenticated());
     }
 
-    public function testItHandlesTheNewQueryResponseOnV2()
+    public function testItHandlesTheNewQueryResponseOnV2(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
@@ -120,7 +120,7 @@ class QueryProcessTest extends BaseTestCase
         $this->assertEquals('Y', $response->authenticated());
     }
 
-    public function testItHandlesANonEnrolledInsteadOfError()
+    public function testItHandlesANonEnrolledInsteadOfError(): void
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
