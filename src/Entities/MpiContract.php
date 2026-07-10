@@ -10,8 +10,6 @@ interface MpiContract
 {
     /**
      * Instantiate the search method according to the version of 3ds.
-     * @param  array  $data.
-     * @return Request.
      */
     public function lookup(array $data): Request;
 
