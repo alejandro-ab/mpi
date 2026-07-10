@@ -25,7 +25,7 @@ class MockClientVersionTwo implements MPIClient
         $this->method = $method;
         $this->data = $data;
 
-        if (strpos($url, MPI::LOOKUP_ENDPOINTS[MPI::VERSION_TWO]) !== false) {
+        if (str_contains($url, MPI::LOOKUP_ENDPOINTS[MPI::VERSION_TWO])) {
             return $this->lookup($url, $method, $data);
         } else {
             $id = explode('/', $url);

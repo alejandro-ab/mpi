@@ -20,7 +20,7 @@ class MockClientVersionOne implements MPIClient
      */
     public function execute($url, $method, $data, $headers)
     {
-        if (strpos($url, 'lookup') !== false) {
+        if (str_contains($url, 'lookup')) {
             return $this->lookup($url, $method, $data, $headers);
         } else {
             $id = explode('/', $url);

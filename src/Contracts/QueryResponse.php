@@ -49,7 +49,7 @@ abstract class QueryResponse extends MPIBaseMessage
 
     public static function readVersion(string $version): string
     {
-        if (substr($version, 0, 1) === '1') {
+        if (str_starts_with($version, '1')) {
             return MPI::VERSION_ONE;
         }
 
