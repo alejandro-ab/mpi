@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="./vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Library Test Suite">
-            <directory suffix="Test.php">./tests</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="MPI_URL" value="https://example.com"/>
-        <env name="MPI_API_KEY" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjMxYTU4YWJmNzEwMTE0MjEwNTNlZjA4MjEzMmYwOWI3NTY0ZDI1ZWYxYjAxNTQyYWVhMmFjMTY5YTIwZDhjN2ZmOTRmZGE1NzgzY2NkZTRhIn0.eyJhdWQiOiIxIiwianRpIjoiMzFhNThhYmY3MTAxMTQyMTA1M2VmMDgyMTMyZjA5Yjc1NjRkMjVlZjFiMDE1NDJhZWEyYWMxNjlhMjBkOGM3ZmY5NGZkYTU3ODNjY2RlNGEiLCJpYXQiOjE1MjI4NDg1MDQsIm5iZiI6MTUyMjg0ODQwNCwiZXhwIjoxNTU0Mzg0NDA0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.eb5i684dfnkOAM36HIjXsi5XxjF0lBHjUXU7cmGRSf3R7ibJmcsL66SX1DSyf0HLarauzSOUDXt3coWuKOao9zSPzMu-iplJyqTBs183eGNhjlgC-101N2Y2ONcajFgruZLuAwEIIzKhXut9FtqUy82BFeUambHW6idihfoYzmI"/>
-    </php>
-    <logging>
-        <log type="coverage-html" target="./tests/coverage"></log>
-    </logging>
+<phpunit backupGlobals="false" bootstrap="./vendor/autoload.php" colors="true" processIsolation="false" stopOnFailure="false" cacheDirectory=".phpunit.cache" backupStaticProperties="false">
+  <coverage>
+    <report>
+      <html outputDirectory="./tests/coverage"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Library Test Suite">
+      <directory suffix="Test.php">./tests</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="MPI_URL" value="https://example.com"/>
+    <env name="MPI_API_KEY" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjMxYTU4YWJmNzEwMTE0MjEwNTNlZjA4MjEzMmYwOWI3NTY0ZDI1ZWYxYjAxNTQyYWVhMmFjMTY5YTIwZDhjN2ZmOTRmZGE1NzgzY2NkZTRhIn0.eyJhdWQiOiIxIiwianRpIjoiMzFhNThhYmY3MTAxMTQyMTA1M2VmMDgyMTMyZjA5Yjc1NjRkMjVlZjFiMDE1NDJhZWEyYWMxNjlhMjBkOGM3ZmY5NGZkYTU3ODNjY2RlNGEiLCJpYXQiOjE1MjI4NDg1MDQsIm5iZiI6MTUyMjg0ODQwNCwiZXhwIjoxNTU0Mzg0NDA0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.eb5i684dfnkOAM36HIjXsi5XxjF0lBHjUXU7cmGRSf3R7ibJmcsL66SX1DSyf0HLarauzSOUDXt3coWuKOao9zSPzMu-iplJyqTBs183eGNhjlgC-101N2Y2ONcajFgruZLuAwEIIzKhXut9FtqUy82BFeUambHW6idihfoYzmI"/>
+  </php>
+  <logging/>
+  <source>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+  </source>
 </phpunit>
