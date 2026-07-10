@@ -25,7 +25,7 @@ class QueryResponseVersionTwo extends QueryResponse
         $this->transStatus = $data['transStatus'];
         $this->eci = $data['eci'];
         $this->acsTransID = $data['acsTransID'] ?? null;
-        $this->dsTransID = $data['dsTransID' ?? null];
+        $this->dsTransID = $data['dsTransID'] ?? null;
         $this->threeDSServerTransID = $data['threeDSServerTransID'] ?? null;
         $this->authenticationValue = $data['authenticationValue'] ?? null;
         $this->transStatusReason = $data['transStatusReason'] ?? null;
@@ -52,15 +52,14 @@ class QueryResponseVersionTwo extends QueryResponse
 
     /**
      * Returns the indicator for the authentication from the ACS
-     *  “Y” - Successful Authentication
-     *  “A” - Successful Attempt
-     *  “N” - Failed Authentication
-     *  “U” - Unable to Authenticate
-     *  ”C” - Challenge Required
-     *  ”D” - Challenge Required
-     *  ”R” - Failed Authenticate
-     *  ”I” - Challenge Required only informative.
-     * @return string
+     *  "Y" - Successful Authentication
+     *  "A" - Successful Attempt
+     *  "N" - Failed Authentication
+     *  "U" - Unable to Authenticate
+     *  "C" - Challenge Required
+     *  "D" - Challenge Required
+     *  "R" - Failed Authenticate
+     *  "I" - Challenge Required only informative.
      */
     public function authenticated(): ?string
     {

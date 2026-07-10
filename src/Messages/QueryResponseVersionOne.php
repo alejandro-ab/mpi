@@ -44,11 +44,10 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * Returns the indicator for the authentication from the ACS
-     *  “Y” - Successful Authentication
-     *  “A” - Successful Attempt
-     *  “N” - Failed Authentication
-     *  “U” - Unable to Authenticate.
-     * @return string
+     *  "Y" - Successful Authentication
+     *  "A" - Successful Attempt
+     *  "N" - Failed Authentication
+     *  "U" - Unable to Authenticate.
      */
     public function authenticated(): ?string
     {

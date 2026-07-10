@@ -27,16 +27,16 @@ class MockClientVersionTwo implements MPIClient
 
         if (str_contains($url, MPI::LOOKUP_ENDPOINTS[MPI::VERSION_TWO])) {
             return $this->lookup($url, $method, $data);
-        } else {
-            $id = explode('/', $url);
-            $id = end($id);
-
-            if ($method == 'PATCH') {
-                return $this->update($id);
-            } else {
-                return $this->query($url, $method);
-            }
         }
+
+        $id = explode('/', $url);
+        $id = end($id);
+
+        if ($method == 'PATCH') {
+            return $this->update($id);
+        }
+
+        return $this->query($url, $method);
     }
 
     /**
@@ -51,35 +51,39 @@ class MockClientVersionTwo implements MPIClient
             throw new MPIException("Incorrect HTTP Method {$method} ON {$url}");
         }
 
-        return match ($data['acctNumber']) {
-            '5554575520765108' => [
-                'error_number' => 1004,
-                'error_description' => 'There is no subscription associated',
-            ],
-            '4716036206946551' => [
+        switch ($data['acctNumber']) {
+            case '5554575520765108':
+                return [
+                    'error_number' => 1004,
+                    'error_description' => 'There is no subscription associated',
+                ];
+            case '4716036206946551':
+                return [
                     'error_number' => 1011,
-                    'error_description' =>  'Invalid arguments to initiate the authentication request',
+                    'error_description' => 'Invalid arguments to initiate the authentication request',
                     'errors' => [
                         'acctNumber'=> [
                             "The card number doesn't pass validation",
                         ],
                     ],
-            ],
-            '6011499026766178' => [
-                'error_number' => 1011,
-                'error_description' =>  'Invalid arguments to initiate the authentication request',
-                'errors' => [
-                    'acctNumber'=> [
-                        'The card number is invalid',
+                ];
+            case '6011499026766178':
+                return [
+                    'error_number' => 1011,
+                    'error_description' => 'Invalid arguments to initiate the authentication request',
+                    'errors' => [
+                        'acctNumber' => [
+                            'The card number is invalid',
+                        ],
                     ],
-                ],
-            ],
-            default => [
-                'sessionToken' => 60,
-                'redirectURL' => 'https://dnetix.co/ping/3ds',
-                'transactionID' => substr($data['cardExpiryDate'], -2),
-            ],
-        };
+                ];
+            default:
+                return [
+                    'sessionToken' => rand(60, 60),
+                    'redirectURL' => 'https://dnetix.co/ping/3ds',
+                    'transactionID' => substr($data['cardExpiryDate'], -2),
+                ];
+        }
     }
 
     /**

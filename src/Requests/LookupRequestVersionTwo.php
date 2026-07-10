@@ -98,7 +98,7 @@ class LookupRequestVersionTwo implements Request
      * Returns the expiration year always with YY format.
      * @return string
      */
-    public function expirationYearShort(String $expirationYear)
+    public function expirationYearShort(string $expirationYear)
     {
         if (!$expirationYear) {
             return null;
