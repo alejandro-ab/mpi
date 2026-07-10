@@ -9,3 +9,4 @@ packages
 /infection.json.dist
 composer.lock
 .php-cs-fixer.cache
+.phpunit.cache
