@@ -28,25 +28,22 @@ class GuzzleMPIClient implements MPIClient
                     'headers' => $headers,
                     'json' => $data,
                 ]);
+            } elseif ($method == 'GET') {
+                $response = $client->get($url, [
+                    'headers' => $headers,
+                    'json' => $data,
+                ]);
+            } elseif ($method == 'PUT') {
+                $response = $client->put($url, [
+                    'headers' => $headers,
+                    'json' => $data,
+                ]);
             } else {
-                if ($method == 'GET') {
-                    $response = $client->get($url, [
-                        'headers' => $headers,
-                        'json' => $data,
-                    ]);
-                } else {
-                    if ($method == 'PUT') {
-                        $response = $client->put($url, [
-                            'headers' => $headers,
-                            'json' => $data,
-                        ]);
-                    } else {
-                        throw new \Exception('No valid method for this request');
-                    }
-                }
+                throw new \Exception('No valid method for this request');
             }
-            $response = $response->getBody()->getContents();
-            return json_decode($response, true);
+
+            $body = $response->getBody()->getContents();
+            return json_decode($body, true);
         } catch (BadResponseException $e) {
             throw new MPIException($e->getResponse()->getBody()->getContents());
         } catch (\Exception $exception) {
