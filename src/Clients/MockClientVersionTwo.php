@@ -27,16 +27,16 @@ class MockClientVersionTwo implements MPIClient
 
         if (str_contains($url, MPI::LOOKUP_ENDPOINTS[MPI::VERSION_TWO])) {
             return $this->lookup($url, $method, $data);
-        } else {
-            $id = explode('/', $url);
-            $id = end($id);
-
-            if ($method == 'PATCH') {
-                return $this->update($id);
-            } else {
-                return $this->query($url, $method);
-            }
         }
+
+        $id = explode('/', $url);
+        $id = end($id);
+
+        if ($method == 'PATCH') {
+            return $this->update($id);
+        }
+
+        return $this->query($url, $method);
     }
 
     /**
