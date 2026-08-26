@@ -2,6 +2,8 @@
 
 namespace PlacetoPay\MPI\Tests\Functionality;
 
+use PlacetoPay\MPI\Clients\MockClientVersionOne;
+use PlacetoPay\MPI\Clients\MockClientVersionTwo;
 use PlacetoPay\MPI\Constants\MPI;
 use PlacetoPay\MPI\MPIService;
 use PlacetoPay\MPI\Tests\BaseTestCase;
@@ -13,7 +15,7 @@ class QueryProcessTest extends BaseTestCase
         return new MPIService(array_merge([
             'url' => getenv('MPI_URL'),
             'apiKey' => getenv('MPI_API_KEY'),
-            'client' => \PlacetoPay\MPI\Clients\MockClientVersionOne::instance(),
+            'client' => MockClientVersionOne::instance(),
         ], $overwrite));
     }
 
@@ -78,7 +80,7 @@ class QueryProcessTest extends BaseTestCase
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
-            'client' => \PlacetoPay\MPI\Clients\MockClientVersionTwo::instance(),
+            'client' => MockClientVersionTwo::instance(),
         ]);
 
         $response = $mpi->query(1);
@@ -98,7 +100,7 @@ class QueryProcessTest extends BaseTestCase
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
-            'client' => \PlacetoPay\MPI\Clients\MockClientVersionTwo::instance(),
+            'client' => MockClientVersionTwo::instance(),
         ]);
 
         $response = $mpi->query(2);
@@ -111,7 +113,7 @@ class QueryProcessTest extends BaseTestCase
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
-            'client' => \PlacetoPay\MPI\Clients\MockClientVersionTwo::instance(),
+            'client' => MockClientVersionTwo::instance(),
         ]);
 
         $response = $mpi->query(7);
@@ -124,7 +126,7 @@ class QueryProcessTest extends BaseTestCase
     {
         $mpi = $this->create([
             '3dsVersion' => MPI::VERSION_TWO,
-            'client' => \PlacetoPay\MPI\Clients\MockClientVersionTwo::instance(),
+            'client' => MockClientVersionTwo::instance(),
         ]);
 
         $response = $mpi->query(8);

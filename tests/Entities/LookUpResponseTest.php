@@ -2,6 +2,7 @@
 
 namespace PlacetoPay\MPI\Tests\Entities;
 
+use PlacetoPay\MPI\Exceptions\ErrorResultMPI;
 use PlacetoPay\MPI\Messages\LookupResponseVersionOne;
 use PlacetoPay\MPI\Tests\BaseTestCase;
 
@@ -20,7 +21,7 @@ class LookUpResponseTest extends BaseTestCase
 
     public function testItHandlesTheErrorResult(): void
     {
-        $this->expectException(\PlacetoPay\MPI\Exceptions\ErrorResultMPI::class);
+        $this->expectException(ErrorResultMPI::class);
         $data = $this->unserialize('YTozOntzOjEyOiJlcnJvcl9udW1iZXIiO2k6MTAwMjtzOjE3OiJlcnJvcl9kZXNjcmlwdGlvbiI7czozNzoiSW52YWxpZCBhcmd1bWVudHMgdG8gaW5pdGlhdGUgcmVxdWVzdCI7czo2OiJlcnJvcnMiO2E6MTp7czozOiJwYW4iO2E6MTp7aTowO3M6NDk6IlRoZSBjYXJkIG51bWJlciBkb2Vzbid0IG1hdGNoIHRoZSBleHBlY3RlZCB2YWx1ZXMiO319fQ==');
         LookupResponseVersionOne::loadFromResult($data);
     }
