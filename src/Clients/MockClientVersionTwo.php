@@ -80,7 +80,7 @@ class MockClientVersionTwo implements MPIClient
                 ];
             default:
                 return [
-                    'sessionToken' => rand(60, 60),
+                    'sessionToken' => random_int(60, 60),
                     'redirectURL' => 'https://dnetix.co/ping/3ds',
                     'transactionID' => substr($data['cardExpiryDate'], -2),
                 ];
