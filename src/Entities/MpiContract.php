@@ -22,12 +22,15 @@ interface MpiContract
 
     /**
      * @param $id
+     * @return string
      */
     public function queryEndpoint($id): string;
 
     /**
      * Return a query response handler according to the 3ds version.
+     * @param  array  $data
      * @param $id
+     * @return QueryResponse
      */
     public function queryResponse(array $data, $id): QueryResponse;
 }

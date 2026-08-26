@@ -63,6 +63,7 @@ class MPIService
     /**
      * Performs the query to know if the card can be authenticated.
      * @param $data
+     * @return LookupResponse
      * @throws \Exception
      */
     public function lookUp($data): LookupResponse
@@ -88,6 +89,7 @@ class MPIService
      * Check the status of the authentication.
      * @param $id
      * @param  array  $additional
+     * @return QueryResponse
      * @throws \Exception
      */
     public function query($id, $additional = []): QueryResponse

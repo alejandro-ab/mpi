@@ -92,7 +92,7 @@ class QueryResponseVersionOne extends QueryResponse
 
     /**
      * @param $result
-     * @param $id
+     * @param null $id
      * @return QueryResponseVersionOne
      * @throws \PlacetoPay\MPI\Exceptions\ErrorResultMPI
      */
