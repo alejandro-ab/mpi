@@ -63,7 +63,7 @@ class MockClientVersionTwo implements MPIClient
                     'error_number' => 1011,
                     'error_description' => 'Invalid arguments to initiate the authentication request',
                     'errors' => [
-                        'acctNumber'=> [
+                        'acctNumber' => [
                             "The card number doesn't pass validation",
                         ],
                     ],
