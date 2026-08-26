@@ -44,6 +44,7 @@ class MockClientVersionOne implements MPIClient
      * @param $method
      * @param $data
      * @param $headers
+     * @return array
      * @throws MPIException
      */
     public function lookup($url, $method, $data, $headers): array
@@ -129,6 +130,7 @@ class MockClientVersionOne implements MPIClient
 
     /**
      * @param $id
+     * @return array
      */
     public function update($id): array
     {

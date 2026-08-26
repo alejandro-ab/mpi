@@ -43,6 +43,7 @@ class MockClientVersionTwo implements MPIClient
      * @param $url
      * @param $method
      * @param $data
+     * @return array
      * @throws MPIException
      */
     public function lookup($url, $method, $data): array
@@ -62,7 +63,7 @@ class MockClientVersionTwo implements MPIClient
                     'error_number' => 1011,
                     'error_description' => 'Invalid arguments to initiate the authentication request',
                     'errors' => [
-                        'acctNumber'=> [
+                        'acctNumber' => [
                             "The card number doesn't pass validation",
                         ],
                     ],
@@ -79,7 +80,7 @@ class MockClientVersionTwo implements MPIClient
                 ];
             default:
                 return [
-                    'sessionToken' => rand(60, 60),
+                    'sessionToken' => random_int(60, 60),
                     'redirectURL' => 'https://dnetix.co/ping/3ds',
                     'transactionID' => substr($data['cardExpiryDate'], -2),
                 ];
@@ -187,6 +188,7 @@ class MockClientVersionTwo implements MPIClient
 
     /**
      * @param $id
+     * @return array
      */
     public function update($id): array
     {

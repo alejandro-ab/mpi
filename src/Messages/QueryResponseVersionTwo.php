@@ -80,7 +80,6 @@ class QueryResponseVersionTwo extends QueryResponse
 
     /**
      * Return true if the signature for the ACS response has been validated.
-     * @return bool
      */
     public function cavv(): ?string
     {
